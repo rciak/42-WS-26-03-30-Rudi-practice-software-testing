@@ -1,0 +1,12 @@
+alias swbugs="cd $HOME/WS/sprint5-with-bugs"
+
+readme() {
+  local BASE="$HOME/WS/"
+  local NAME="README.md"
+  local EXCLUDE="sprint[1-4]|performance"
+  local TRIM_PREFIX="\./"
+  find $BASE -name $NAME | grep -E -v $EXCLUDE | sed "#$TRIM_PREFIX#d" | sort -V
+}
+
+
+
