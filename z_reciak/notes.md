@@ -24,6 +24,9 @@ docker compose logs -f angular-ui
 
 ## From Francesco's email
 
+The following comes mainly from Francesco's email (29.03.2026). Only some small
+tweaks and additions were done by me.
+
 ### SOLUTION
 
 When I tried to log in with the defined user in the /sprint5/API/.env in  the mariadb the user was rejected as non existing
@@ -69,17 +72,28 @@ in case after the data in the main page is displayed you try to open a product a
 The data is correct but it might point to an older seed... 
 to solve this problem just run:
 
-```zsh
-docker exec -u root practice-software-testing-web-1 sh -c "rm -rf /var/cache/nginx/*"
+```bash
+# Francescos Ori: 
+# docker exec -u root practice-software-testing-web-1 sh -c "rm -rf /var/cache/nginx/*"
+
+# For me:
+docker exec -u root 42-ws-26-03-30-rudi-practice-software-testing-mariadb-1 sh -c "rm -rf /var/cache/nginx/*"
 ```
 
 that will clean the cache
 I would also suggest to be on the safe side and do:
 
-```
+```bash
  docker compose down -v
 ```
+
 to clean all the container and any volume with it before running again the compose up.
+
+```bash
+docker compose up -d
+# Checking if everything worked - Get out with CTRL+C
+docker compose logs -f1
+```
 
 **NOTE n.2**
 since I forked the project there has been a substantial set of updates to the website which I just noticed today.. 
